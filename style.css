@@ -1,0 +1,93 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dd, dt {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	margin: 0;
+}
+
+input + label {
+	padding-left: 0.25em;
+}
+
+label[for], input[type=radio] {
+	cursor: pointer;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	padding: 2em;
+	font-family: Georgia, serif;
+}
+
+h1 {
+	margin: 0.5em 0;
+	font-weight: normal;
+	font-size: 2.5em;
+}
+
+#generator {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.options {
+	margin: 0.5em 0;
+}
+
+.options.many {
+	column-count: 2;
+	column-gap: 1em;
+}
+
+.options li {
+	margin: 0.5em 0;
+	list-style-type: none;
+	font-size: 0.9em;
+	display: inline;
+	margin-right: 0.5em;
+}
+
+.options.many li {
+	display: list-item;
+}
+
+#generate {
+	font-family: Georgia, serif;
+	font-size: 1.2em;
+	padding: 0.4em;
+	margin: 0.5em 0;
+}
+
+#generated-names li {
+	list-style-type: none;
+	opacity: 0.5;
+	line-height: 1.5;
+	font-size: 0.9em;
+}
+
+#generated-names li:first-child {
+	opacity: 1;
+	font-size: 1.5em;
+	margin: 0.5em 0;
+}
+
+#generated-names li:nth-child(12) { opacity: 0.45; }
+#generated-names li:nth-child(13) { opacity: 0.40; }
+#generated-names li:nth-child(14) { opacity: 0.35; }
+#generated-names li:nth-child(15) { opacity: 0.30; }
+#generated-names li:nth-child(16) { opacity: 0.25; }
+#generated-names li:nth-child(17) { opacity: 0.20; }
+#generated-names li:nth-child(18) { opacity: 0.15; }
+#generated-names li:nth-child(19) { opacity: 0.1; }
+#generated-names li:nth-child(20) { opacity: 0.05; }
+
+em.hotkey {
+	font-style: normal;
+	text-decoration: underline;
+}

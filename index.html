@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="knockout.js"></script>
+		<script type="text/javascript" src="knockout-wrapper.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="generator">
+			<h1>Census Name Generator</h1>
+			<ul class="options">
+				<li>
+					<input type="radio" name="gender" value="male" id="male" data-bind="checked: gender"><label for="male"><em class="hotkey">M</em>ale</label>
+				</li>
+				<li>
+					<input type="radio" name="gender" value="female" id="female" data-bind="checked: gender"><label for="female"><em class="hotkey">F</em>emale</label>
+				</li>
+			</ul>
+			<button type="submit" id="generate" data-bind="click: generateName">Generate</button>
+			<ul data-bind="foreach: names.slice(0, maxNameCount)" id="generated-names">
+				<li data-bind="text: $data"></li>
+			</ul>
+		</div>
+	</body>
+</html>
