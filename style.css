@@ -48,7 +48,7 @@ h1 {
 .options li {
 	margin: 0.5em 0;
 	list-style-type: none;
-	font-size: 0.9em;
+	font-size: 1em;
 	display: inline;
 	margin-right: 0.5em;
 }
@@ -59,7 +59,7 @@ h1 {
 
 #generate {
 	font-family: Georgia, serif;
-	font-size: 1.2em;
+	font-size: 1.25em;
 	padding: 0.4em;
 	margin: 0.5em 0;
 }
@@ -68,7 +68,7 @@ h1 {
 	list-style-type: none;
 	opacity: 0.5;
 	line-height: 1.5;
-	font-size: 0.9em;
+	font-size: 1em;
 }
 
 #generated-names li:first-child {
