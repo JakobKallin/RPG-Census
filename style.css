@@ -28,7 +28,7 @@ label[for], input[type=radio] {
 	cursor: pointer;
 }
 
-#generator {
+.content {
 	margin: 0 auto;
 	text-align: center;
 }
@@ -61,28 +61,28 @@ button {
 	margin: 0.5em 0;
 }
 
-#generated-names li {
+.names li {
 	list-style-type: none;
 	opacity: 0.5;
 	line-height: 1.5;
 	font-size: 1em;
 }
 
-#generated-names li:first-child {
+.names li:first-child {
 	opacity: 1;
 	font-size: 1.5em;
 	margin: 0.5em 0;
 }
 
-#generated-names li:nth-child(12) { opacity: 0.45; }
-#generated-names li:nth-child(13) { opacity: 0.40; }
-#generated-names li:nth-child(14) { opacity: 0.35; }
-#generated-names li:nth-child(15) { opacity: 0.30; }
-#generated-names li:nth-child(16) { opacity: 0.25; }
-#generated-names li:nth-child(17) { opacity: 0.20; }
-#generated-names li:nth-child(18) { opacity: 0.15; }
-#generated-names li:nth-child(19) { opacity: 0.1; }
-#generated-names li:nth-child(20) { opacity: 0.05; }
+.names li:nth-child(12) { opacity: 0.45; }
+.names li:nth-child(13) { opacity: 0.40; }
+.names li:nth-child(14) { opacity: 0.35; }
+.names li:nth-child(15) { opacity: 0.30; }
+.names li:nth-child(16) { opacity: 0.25; }
+.names li:nth-child(17) { opacity: 0.20; }
+.names li:nth-child(18) { opacity: 0.15; }
+.names li:nth-child(19) { opacity: 0.1; }
+.names li:nth-child(20) { opacity: 0.05; }
 
 em.hotkey {
 	font-style: normal;
