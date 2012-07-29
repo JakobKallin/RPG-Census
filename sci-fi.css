@@ -1,6 +1,8 @@
 body {
 	color: white;
 	background-color: black;
+	background-image: url('scanline.png');
+	background-color: hsl(0, 0%, 10%);
 }
 
 body, button {
