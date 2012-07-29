@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div class="content">
-			<h1>Census Name Generator</h1>
+			<h1>RPG Census</h1>
 			<ul class="options">
 				<li>
 					<input type="radio" name="gender" value="male" id="male" data-bind="checked: gender"><label for="male"><em class="hotkey">M</em>ale</label>
@@ -20,7 +20,7 @@
 					<input type="radio" name="gender" value="female" id="female" data-bind="checked: gender"><label for="female"><em class="hotkey">F</em>emale</label>
 				</li>
 			</ul>
-			<button type="submit" data-bind="click: generateName">Generate</button>
+			<button type="submit" data-bind="click: generateName">Generate Name</button>
 			<ul data-bind="foreach: names.slice(0, maxNameCount)" class="names">
 				<li data-bind="text: $data"></li>
 			</ul>
