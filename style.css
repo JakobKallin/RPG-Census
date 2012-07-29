@@ -24,7 +24,9 @@ input + label {
 	padding-left: 0.25em;
 }
 
-label[for], input[type=radio] {
+label[for],
+input[type=radio],
+button {
 	cursor: pointer;
 }
 
