@@ -1,25 +1,10 @@
-html {
-	overflow-y: scroll;
-}
-
-html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dd, dt {
+* {
 	margin: 0;
 	padding: 0;
 }
 
-input {
-	margin: 0;
-}
-
-input + label {
-	padding-left: 0.25em;
-}
-
-label[for], input[type=radio] {
-	cursor: pointer;
-}
-
 html {
+	overflow-y: scroll;
 	width: 100%;
 	height: 100%;
 }
@@ -33,6 +18,14 @@ h1 {
 	margin: 0.5em 0;
 	font-weight: normal;
 	font-size: 2.5em;
+}
+
+input + label {
+	padding-left: 0.25em;
+}
+
+label[for], input[type=radio] {
+	cursor: pointer;
 }
 
 #generator {
@@ -61,7 +54,7 @@ h1 {
 	display: list-item;
 }
 
-#generate {
+button {
 	font-family: Georgia, serif;
 	font-size: 1.25em;
 	padding: 0.4em;
