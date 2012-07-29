@@ -1,16 +1,20 @@
 var viewModel = {
 	maxNameCount: 20,
-	gender: 'male',
+	gender: ko.observable('male'),
 	lists: {},
-	names: [],
+	names: ko.observableArray(),
 	generateName: function() {
-		var first = this.lists[this.gender].random();
+		var first = this.lists[this.gender()].random();
 		var last = this.lists['last'].random();
 		var full = first + ' ' + last;
 		
 		this.names.unshift(full);
 	}
 };
+
+window.addEventListener('load', function() {
+	ko.applyBindings(viewModel);
+});
 
 Array.prototype.random = function() {
 	return this[Math.floor(Math.random() * this.length)];
@@ -50,7 +54,7 @@ window.addEventListener('load', function() {
 		document.addEventListener('keydown', function(event) {
 			var key = String.fromCharCode(event.keyCode);
 			if ( key in hotkeys ) {
-				viewModel.gender = hotkeys[key];
+				viewModel.gender(hotkeys[key]);
 				viewModel.generateName();
 			}
 		});
