@@ -19,9 +19,8 @@
 			<dl class="settings">
 				<dt>Theme</dt>
 				<dd>
-					<ul class="themes" data-bind="foreach: themes">
-						<li><a data-bind="text: title, attr: { href: path }"></a></li>
-					</ul>
+					<select data-bind="options: themes, optionsText: 'title', optionsValue: 'path', event: {change: selectTheme}">
+					</select>
 				</dd>
 			</dl>
 			<ul class="options">
