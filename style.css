@@ -10,11 +10,11 @@ html {
 }
 
 body {
-	padding: 2em;
+	padding: 2.5em;
 }
 
 h1 {
-	margin: 0.5em 0;
+	margin-bottom: 0.5em;
 	font-weight: normal;
 	font-size: 2.5em;
 }
@@ -87,4 +87,24 @@ button {
 em.hotkey {
 	font-style: normal;
 	text-decoration: underline;
+}
+
+.settings {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 1.5em;
+	margin-right: 1.5em;
+}
+
+.settings dt, .settings dd, .settings ul, .settings li	 {
+	display: inline;
+}
+
+.settings dt:after {
+	content: ":";
+}
+
+.settings li:not(:last-child):after {
+	content: " | ";
 }

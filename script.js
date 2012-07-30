@@ -9,7 +9,12 @@ var viewModel = {
 		var full = first + ' ' + last;
 		
 		this.names.unshift(full);
-	}
+	},
+	themes: [
+		{title: 'Generic', path: 'generic.css'},
+		{title: 'Sci-Fi', path: 'sci-fi.css'},
+		{title: 'Cthulhu', path: 'cthulhu.css'}
+	]
 };
 
 Array.prototype.random = function() {

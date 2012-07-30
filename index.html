@@ -16,6 +16,14 @@
 	<body>
 		<div class="content">
 			<h1>RPG Census</h1>
+			<dl class="settings">
+				<dt>Theme</dt>
+				<dd>
+					<ul class="themes" data-bind="foreach: themes">
+						<li><a data-bind="text: title, attr: { href: path }"></a></li>
+					</ul>
+				</dd>
+			</dl>
 			<ul class="options">
 				<li>
 					<input type="radio" name="gender" value="male" id="male" data-bind="checked: gender"><label for="male"><em class="hotkey">M</em>ale</label>
