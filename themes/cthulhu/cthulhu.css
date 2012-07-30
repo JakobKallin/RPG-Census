@@ -27,6 +27,10 @@ button {
 	font-weight: bold;
 }
 
+select {
+	font-family: Engebrechtre, sans-serif;
+}
+
 .settings dt {
 	font-family: Engebrechtre, sans-serif;
 	font-weight: bold;

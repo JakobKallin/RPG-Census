@@ -108,3 +108,7 @@ em.hotkey {
 .settings li:not(:last-child):after {
 	content: " | ";
 }
+
+select {
+	font-size: 1em;
+}
