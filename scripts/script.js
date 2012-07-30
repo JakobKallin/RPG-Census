@@ -68,7 +68,6 @@ window.addEventListener('load', function() {
 		return (
 			csv.split(/\r?\n/)
 			.filter(function(line) { return line.length > 0; })
-			.map(function(line) { return line.replace(/,.*$/, ''); })
 		);
 	}
 	
