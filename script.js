@@ -9,6 +9,23 @@ var viewModel = {
 		var full = first + ' ' + last;
 		
 		this.names.unshift(full);
+	},
+	themes: [
+		{title: 'Generic', path: 'generic.css'},
+		{title: 'Sci-Fi', path: 'sci-fi.css'},
+		{title: 'Cthulhu', path: 'cthulhu.css'}
+	],
+	selectTheme: function(data, event) {
+		var path = event.target.value;
+		this.activateStylesheet(path);
+	},
+	activateStylesheet: function(path) {
+		var links = document.head.querySelectorAll('link[title][rel~="stylesheet"]');
+		for ( var i = 0; i < links.length; i++ ) {
+			links[i].disabled = true;
+		}
+		var activeLink = document.head.querySelector('link[href="' + path + '"]');
+		activeLink.disabled = false;
 	}
 };
 

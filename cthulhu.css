@@ -1,0 +1,28 @@
+@font-face {
+	font-family: Covington;
+	src: url('covington.ttf');
+}
+
+@font-face {
+	font-family: Engebrechtre;
+	src: url('engebrechtre.otf');
+}
+
+@font-face {
+	font-family: Engebrechtre;
+	font-weight: bold;
+	src: url('engebrechtre-bold.otf');
+}
+
+body {
+	font-family: Covington, serif;
+	background-image: url('clouds.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+button {
+	font-family: Engebrechtre, sans-serif;
+	font-weight: bold;
+}
