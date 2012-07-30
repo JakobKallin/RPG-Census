@@ -1,8 +1,9 @@
 body {
-	color: white;
 	background-color: black;
 	background-image: url('scanline.png');
 	background-color: hsl(0, 0%, 10%);
+	color: hsl(190, 100%, 50%);
+	text-shadow: 0 0 1em hsl(190, 100%, 50%);
 }
 
 body, button {
@@ -11,16 +12,5 @@ body, button {
 
 h1 {
 	font-family: Corbel, sans-serif;
-	color: hsl(190, 100%, 50%);
-	text-shadow: 0 0 1em hsl(190, 100%, 50%);
-}
-
-.options li {
-	color: hsl(190, 100%, 50%);
-	text-shadow: 0 0 1em hsl(190, 100%, 50%);
-}
-
-.names li {
-	color: hsl(190, 100%, 50%);
 	text-shadow: 0 0 1em hsl(190, 100%, 50%);
 }

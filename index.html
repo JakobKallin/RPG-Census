@@ -27,6 +27,13 @@
 			<ul data-bind="foreach: names.slice(0, maxNameCount)" class="names">
 				<li data-bind="text: $data"></li>
 			</ul>
+			<dl class="settings">
+				<dt>Theme</dt>
+				<dd>
+					<select data-bind="options: themes, optionsText: 'title', optionsValue: 'path', event: {change: selectTheme}">
+					</select>
+				</dd>
+			</dl>
 		</div>
 	</body>
 </html>

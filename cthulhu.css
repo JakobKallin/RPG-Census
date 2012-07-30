@@ -26,3 +26,9 @@ button {
 	font-family: Engebrechtre, sans-serif;
 	font-weight: bold;
 }
+
+.settings dt {
+	font-family: Engebrechtre, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+}
