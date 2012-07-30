@@ -3,6 +3,8 @@ var viewModel = {
 	gender: ko.observable('male'),
 	lists: {},
 	names: ko.observableArray(),
+	buttonText: ko.observable('Loading Names…'),
+	namesLoaded: ko.observable(false),
 	generateName: function() {
 		var first = this.lists[this.gender()].random();
 		var last = this.lists['last'].random();
@@ -38,11 +40,13 @@ Array.prototype.random = function() {
 };
 
 window.addEventListener('load', function() {
+	var listNames = ['male', 'female', 'last'];
+	var button = document.getElementsByTagName('button')[0];
+	
 	loadLists();
 	activateHotkeys();
 	
 	function loadLists() {
-		var listNames = ['male', 'female', 'last'];
 		listNames.forEach(function(listName) {
 			var fileName = 'stats/' + listName + '.csv';
 			jQuery.get(fileName, function(csv) { addList(listName, csv); }, 'text');
@@ -52,6 +56,12 @@ window.addEventListener('load', function() {
 	function addList(name, csv) {
 		var list = parseList(csv);
 		viewModel.lists[name] = list;
+		
+		var allListsLoaded = listNames.every(function(name) { return name in viewModel.lists; });
+		if ( allListsLoaded ) {
+			viewModel.namesLoaded(true);
+			viewModel.buttonText('Generate Name');
+		}
 	}
 	
 	function parseList(csv) {
@@ -72,7 +82,7 @@ window.addEventListener('load', function() {
 			var key = String.fromCharCode(event.keyCode);
 			if ( key in hotkeys ) {
 				viewModel.gender(hotkeys[key]);
-				viewModel.generateName();
+				button.click();
 			}
 		});
 	}

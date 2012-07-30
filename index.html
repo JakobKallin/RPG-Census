@@ -25,7 +25,7 @@
 						<input type="radio" name="gender" value="female" id="female" data-bind="checked: gender"><label for="female"><em class="hotkey">F</em>emale</label>
 					</li>
 				</ul>
-				<button type="submit" data-bind="click: generateName">Generate Name</button>
+				<button type="submit" data-bind="text: buttonText, click: generateName, enable: namesLoaded"></button>
 			</form>
 			<ul data-bind="foreach: names.slice(0, maxNameCount)" class="names">
 				<li data-bind="text: $data"></li>
