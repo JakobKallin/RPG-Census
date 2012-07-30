@@ -22,9 +22,10 @@ body {
 	background-position: center center;
 }
 
-button {
+h1, button, label {
 	font-family: Engebrechtre, sans-serif;
 	font-weight: bold;
+	text-transform: uppercase;
 }
 
 select {
