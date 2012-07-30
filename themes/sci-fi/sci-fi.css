@@ -6,7 +6,7 @@ body {
 	text-shadow: 0 0 1em hsl(190, 100%, 50%);
 }
 
-body, button {
+body, button, select {
 	font-family: Calibri, sans-serif;
 }
 
