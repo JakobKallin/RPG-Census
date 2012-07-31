@@ -7,10 +7,9 @@ body {
 }
 
 body, button, select {
-	font-family: Calibri, sans-serif;
+	font-family: Corbel, sans-serif;
 }
 
 h1 {
-	font-family: Corbel, sans-serif;
 	text-shadow: 0 0 1em hsl(190, 100%, 50%);
 }
