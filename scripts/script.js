@@ -6,8 +6,8 @@ var viewModel = {
 	buttonText: ko.observable('Loading Names…'),
 	namesLoaded: ko.observable(false),
 	generateName: function() {
-		var first = this.lists[this.gender()].random();
-		var last = this.lists['last'].random();
+		var first = this.lists['American'][this.gender()].random();
+		var last = this.lists['American'].family.random();
 		var full = first + ' ' + last;
 		
 		this.names.unshift(full);
@@ -47,33 +47,16 @@ window.addEventListener('load', function() {
 	activateHotkeys();
 	
 	function loadLists() {
-		listNames.forEach(function(listName) {
-			var fileName = 'stats/' + listName + '.csv';
-			var request = new XMLHttpRequest();
-			request.open('GET', fileName);
-			request.send();
-			request.addEventListener('load', function() {
-				addList(listName, request.responseText);
-			});
-		});
-	}
-	
-	function addList(name, csv) {
-		var list = parseList(csv);
-		viewModel.lists[name] = list;
-		
-		var allListsLoaded = listNames.every(function(name) { return name in viewModel.lists; });
-		if ( allListsLoaded ) {
+		var fileName = 'stats/american.json';
+		var request = new XMLHttpRequest();
+		request.open('GET', fileName);
+		request.send();
+		request.addEventListener('load', function() {
+			var list = JSON.parse(request.responseText);
+			viewModel.lists[list.group] = list;
 			viewModel.namesLoaded(true);
 			viewModel.buttonText('Generate Name');
-		}
-	}
-	
-	function parseList(csv) {
-		return (
-			csv.split(/\r?\n/)
-			.filter(function(line) { return line.length > 0; })
-		);
+		});
 	}
 	
 	function activateHotkeys() {
