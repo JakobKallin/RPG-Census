@@ -1,5 +1,8 @@
 <!doctype html>
-<html data-ng-app="Census">
+<html
+	data-ng-app="Census"
+	data-ng-controller="Controller"
+	data-drop="addList">
 	<head>
 		<meta charset="utf-8">
 		
@@ -14,17 +17,19 @@
 		<link title="Science Fiction" rel="alternate stylesheet" href="themes/sci-fi/sci-fi.css">
 		<link title="Cthulhu" rel="alternate stylesheet" href="themes/cthulhu/cthulhu.css">
 	</head>
-	<body
-		data-ng-controller="Controller"
-		data-drop="add">
+	<body>
 		<div class="content">
 			<h1>RPG Census</h1>
 			<form>
-				<select
-					data-ng-model="selectedList"
-					data-ng-options="list.group for list in lists"
-					data-ng-show="lists.length > 1">
-				</select>
+				<ul class="options">
+					<li>
+						<select
+							data-ng-model="selectedList"
+							data-ng-options="list.culture for list in lists"
+							data-ng-show="lists.length > 1">
+						</select>
+					</li>
+				</ul>
 				<ul class="options">
 					<li>
 						<input
@@ -32,9 +37,8 @@
 							name="gender"
 							value="male"
 							id="male"
-							data-ng-model="gender">
-							<label for="male"><em class="hotkey">M</em>ale
-						</label>
+							data-ng-model="gender"><!--
+						--><label for="male"><em class="hotkey">M</em>ale</label>
 					</li>
 					<li>
 						<input
@@ -42,13 +46,17 @@
 							name="gender"
 							value="female"
 							id="female"
-							data-ng-model="gender">
-							<label for="female"><em class="hotkey">F</em>emale</label>
+							data-ng-model="gender"><!--
+						--><label for="female"><em class="hotkey">F</em>emale</label>
 					</li>
 				</ul>
-				<button
-					type="submit"
-					data-ng-click="generateName()">{{buttonText}}</button>
+				<ul class="options">
+					<li>
+						<button
+							type="submit"
+							data-ng-click="generateName()">{{buttonText}}</button>
+					</li>
+				</ul>
 			</form>
 			<ul class="names">
 				<li data-ng-repeat="name in names">{{name}}</li>

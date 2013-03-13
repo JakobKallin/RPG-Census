@@ -35,7 +35,7 @@ button:not([disabled]) {
 }
 
 .options {
-	margin: 0.5em 0;
+	margin: 1em 0;
 }
 
 .options.many {
@@ -48,7 +48,10 @@ button:not([disabled]) {
 	list-style-type: none;
 	font-size: 1em;
 	display: inline;
-	margin-right: 0.5em;
+}
+
+.options li + li {
+	margin-left: 0.5em;
 }
 
 .options.many li {
@@ -58,7 +61,6 @@ button:not([disabled]) {
 button {
 	font-size: 1.25em;
 	padding: 0.4em;
-	margin: 0.5em 0;
 }
 
 .names li {

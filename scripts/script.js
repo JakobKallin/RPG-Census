@@ -18,7 +18,8 @@ angular
 					reader.onload = function() {
 						var list = JSON.parse(reader.result);
 						scope.$apply(function() {
-							scope.addList(list);
+							var callback = scope.$eval(attrs.drop);
+							callback(list);
 						});
 					};
 				})
