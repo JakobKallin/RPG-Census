@@ -13,9 +13,9 @@ var viewModel = {
 		this.names.unshift(full);
 	},
 	themes: [
-		{title: 'Generic', path: 'themes/generic/generic.css'},
-		{title: 'Sci-Fi', path: 'themes/sci-fi/sci-fi.css'},
-		{title: 'Cthulhu', path: 'themes/cthulhu/cthulhu.css'}
+		{ title: 'Generic', path: 'themes/generic/generic.css' },
+		{ title: 'Sci-Fi', path: 'themes/sci-fi/sci-fi.css' },
+		{ title: 'Cthulhu', path: 'themes/cthulhu/cthulhu.css' }
 	],
 	selectTheme: function(data, event) {
 		var path = event.target.value;
@@ -49,7 +49,12 @@ window.addEventListener('load', function() {
 	function loadLists() {
 		listNames.forEach(function(listName) {
 			var fileName = 'stats/' + listName + '.csv';
-			jQuery.get(fileName, function(csv) { addList(listName, csv); }, 'text');
+			var request = new XMLHttpRequest();
+			request.open('GET', fileName);
+			request.send();
+			request.addEventListener('load', function() {
+				addList(listName, request.responseText);
+			});
 		});
 	}
 	

@@ -5,7 +5,6 @@
 		
 		<title>RPG Census</title>
 		
-		<script src="scripts/jquery.js"></script>
 		<script src="scripts/knockout.js"></script>
 		<script src="scripts/script.js" charset="utf-8"></script>
 		
@@ -21,21 +20,42 @@
 			<form>
 				<ul class="options">
 					<li>
-						<input type="radio" name="gender" value="male" id="male" data-bind="checked: gender"><label for="male"><em class="hotkey">M</em>ale</label>
+						<input
+							type="radio"
+							name="gender"
+							value="male"
+							id="male"
+							data-bind="checked: gender">
+							<label for="male"><em class="hotkey">M</em>ale
+						</label>
 					</li>
 					<li>
-						<input type="radio" name="gender" value="female" id="female" data-bind="checked: gender"><label for="female"><em class="hotkey">F</em>emale</label>
+						<input
+							type="radio"
+							name="gender"
+							value="female"
+							id="female"
+							data-bind="checked: gender">
+							<label for="female"><em class="hotkey">F</em>emale</label>
 					</li>
 				</ul>
-				<button type="submit" data-bind="text: buttonText, click: generateName, enable: namesLoaded"></button>
+				<button
+					type="submit"
+					data-bind="text: buttonText, click: generateName, enable: namesLoaded"></button>
 			</form>
-			<ul data-bind="foreach: names.slice(0, maxNameCount)" class="names">
+			<ul
+				class="names"
+				data-bind="foreach: names.slice(0, maxNameCount)">
 				<li data-bind="text: $data"></li>
 			</ul>
 			<dl class="settings">
 				<dt>Theme</dt>
 				<dd>
-					<select data-bind="options: themes, optionsText: 'title', optionsValue: 'path', event: {change: selectTheme}">
+					<select data-bind="
+						options: themes,
+						optionsText: 'title',
+						optionsValue: 'path',
+						event: { change: selectTheme }">
 					</select>
 				</dd>
 			</dl>
