@@ -13,9 +13,11 @@
 		
 		<link rel="stylesheet" href="common.css">
 		
-		<link title="Generic" rel="stylesheet" href="themes/generic/generic.css">
-		<link title="Science Fiction" rel="alternate stylesheet" href="themes/sci-fi/sci-fi.css">
-		<link title="Cthulhu" rel="alternate stylesheet" href="themes/cthulhu/cthulhu.css">
+		<link
+			data-ng-repeat="theme in themes"
+			rel="{{theme.rel}}"
+			data-ng-href="{{theme.url}}"
+			title="{{theme.title}}">
 	</head>
 	<body>
 		<div class="content">
@@ -60,20 +62,16 @@
 			</form>
 			<ul class="names">
 				<li data-ng-repeat="name in names">{{name}}</li>
-			</ul><!-- 
+			</ul>
 			<dl class="settings">
 				<dt>Theme</dt>
 				<dd>
 					<select
-						data-ng-options="themes"
-						data-ng-="
-						options: themes,
-						optionsText: 'title',
-						optionsValue: 'path',
-						event: { change: selectTheme }">
+						data-ng-options="theme.title for theme in themes"
+						data-ng-model="selectedTheme">
 					</select>
 				</dd>
-			</dl> -->
+			</dl>
 		</div>
 	</body>
 </html>

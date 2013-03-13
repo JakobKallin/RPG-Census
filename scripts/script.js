@@ -50,24 +50,34 @@ angular
 	};
 	
 	$scope.themes = [
-		{ title: 'Generic', path: 'themes/generic/generic.css' },
-		{ title: 'Sci-Fi', path: 'themes/sci-fi/sci-fi.css' },
-		{ title: 'Cthulhu', path: 'themes/cthulhu/cthulhu.css' }
+		{ title: 'Generic', url: 'themes/generic/generic.css', rel: 'stylesheet' },
+		{ title: 'Sci-Fi', url: 'themes/sci-fi/sci-fi.css', rel: 'alternate stylesheet' },
+		{ title: 'Cthulhu', url: 'themes/cthulhu/cthulhu.css', rel: 'alternate stylesheet' }
 	];
 	
-	$scope.selectTheme = function(data, event) {
-		var path = event.target.value;
-		this.activateStylesheet(path);
-	};
-	
-	$scope.activateStylesheet = function(path) {
-		var links = document.head.querySelectorAll('link[title][rel~="stylesheet"]');
-		for ( var i = 0; i < links.length; i++ ) {
-			links[i].disabled = true;
+	var selectedTheme;
+	Object.defineProperty($scope, 'selectedTheme', {
+		get: function() {
+			return selectedTheme;
+		},
+		set: function(theme) {
+			var links = document.head.querySelectorAll('link[title][rel~="stylesheet"]');
+			Array.prototype.forEach.call(links, function(link) {
+				if ( link.title === theme.title ) {
+					link.disabled = false;
+				} else {
+					link.disabled = true;
+				}
+			});
+			selectedTheme = theme;
 		}
-		var activeLink = document.head.querySelector('link[href="' + path + '"]');
-		activeLink.disabled = false;
-	};
+	});
+	
+	window.addEventListener('load', function() {
+		$scope.$apply(function() {
+			$scope.selectedTheme = $scope.themes[0];
+		});
+	});
 	
 	$scope.addList = function(list) {
 		$scope.lists.push(list);
