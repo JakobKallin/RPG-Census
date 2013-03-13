@@ -56,7 +56,8 @@
 					<li>
 						<button
 							type="submit"
-							data-ng-click="generateName()">{{buttonText}}</button>
+							data-ng-click="generateName()"
+							data-ng-disabled="lists.length == 0">{{buttonText}}</button>
 					</li>
 				</ul>
 			</form>
