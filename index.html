@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
+<html data-ng-app>
 	<head>
 		<meta charset="utf-8">
 		
 		<title>RPG Census</title>
 		
-		<script src="scripts/knockout.js"></script>
 		<script src="scripts/script.js" charset="utf-8"></script>
+		<script src="scripts/angular.js"></script>
 		
 		<link rel="stylesheet" href="common.css">
 		
@@ -14,10 +14,15 @@
 		<link title="Science Fiction" rel="alternate stylesheet" href="themes/sci-fi/sci-fi.css">
 		<link title="Cthulhu" rel="alternate stylesheet" href="themes/cthulhu/cthulhu.css">
 	</head>
-	<body>
+	<body data-ng-controller="Controller">
 		<div class="content">
 			<h1>RPG Census</h1>
 			<form>
+				<select
+					data-ng-model="selectedList"
+					data-ng-options="list.group for list in lists"
+					data-ng-show="lists.length > 1">
+				</select>
 				<ul class="options">
 					<li>
 						<input
@@ -25,7 +30,7 @@
 							name="gender"
 							value="male"
 							id="male"
-							data-bind="checked: gender">
+							data-ng-model="gender">
 							<label for="male"><em class="hotkey">M</em>ale
 						</label>
 					</li>
@@ -35,30 +40,30 @@
 							name="gender"
 							value="female"
 							id="female"
-							data-bind="checked: gender">
+							data-ng-model="gender">
 							<label for="female"><em class="hotkey">F</em>emale</label>
 					</li>
 				</ul>
 				<button
 					type="submit"
-					data-bind="text: buttonText, click: generateName, enable: namesLoaded"></button>
+					data-ng-click="generateName()">{{buttonText}}</button>
 			</form>
-			<ul
-				class="names"
-				data-bind="foreach: names.slice(0, maxNameCount)">
-				<li data-bind="text: $data"></li>
-			</ul>
+			<ul class="names">
+				<li data-ng-repeat="name in names">{{name}}</li>
+			</ul><!-- 
 			<dl class="settings">
 				<dt>Theme</dt>
 				<dd>
-					<select data-bind="
+					<select
+						data-ng-options="themes"
+						data-ng-="
 						options: themes,
 						optionsText: 'title',
 						optionsValue: 'path',
 						event: { change: selectTheme }">
 					</select>
 				</dd>
-			</dl>
+			</dl> -->
 		</div>
 	</body>
 </html>
