@@ -85,6 +85,7 @@ button {
 .names li:nth-child(18) { opacity: 0.15; }
 .names li:nth-child(19) { opacity: 0.1; }
 .names li:nth-child(20) { opacity: 0.05; }
+.names li:nth-child(n+21) { display: none; }
 
 em.hotkey {
 	font-style: normal;

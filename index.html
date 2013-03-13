@@ -62,7 +62,7 @@
 				</ul>
 			</form>
 			<ul class="names">
-				<li data-ng-repeat="name in names">{{name}}</li>
+				<li data-ng-repeat="name in names.slice(0, 20)">{{name}}</li>
 			</ul>
 			<dl class="settings">
 				<dt>Theme</dt>
