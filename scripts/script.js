@@ -2,7 +2,36 @@ Array.prototype.random = function() {
 	return this[Math.floor(Math.random() * this.length)];
 };
 
-var Controller = function($scope) {
+angular
+.module('Census', [])
+.directive('drop', function() {
+	return {
+		restrict: 'A',
+		link: function(scope, $element, attrs) {
+			var element = $element[0];
+			
+			element.addEventListener('drop', function(event) {
+				event.preventDefault();
+				Array.prototype.forEach.call(event.dataTransfer.files, function(file) {
+					var reader = new FileReader();
+					reader.readAsText(file);
+					reader.onload = function() {
+						var list = JSON.parse(reader.result);
+						scope.$apply(function() {
+							scope.addList(list);
+						});
+					};
+				})
+			})
+			
+			element.addEventListener('dragover', function(event) {
+				event.preventDefault();
+				event.dataTransfer.dropEffect = 'copy';
+			});
+		}
+	};
+})
+.controller('Controller', function($scope) {
 	$scope.maxNameCount = 20;
 	$scope.gender = 'male';
 	$scope.selectedList = null;
@@ -39,6 +68,13 @@ var Controller = function($scope) {
 		activeLink.disabled = false;
 	};
 	
+	$scope.addList = function(list) {
+		$scope.lists.push(list);
+		$scope.selectedList = list;
+		$scope.namesLoaded = true;
+		$scope.buttonText = 'Generate Name';
+	};
+	
 	window.addEventListener('load', function() {
 		var listNames = ['male', 'female', 'last'];
 		var button = document.querySelector('button');
@@ -54,10 +90,7 @@ var Controller = function($scope) {
 			request.addEventListener('load', function() {
 				$scope.$apply(function() {
 					var list = JSON.parse(request.responseText);
-					$scope.lists.push(list);
-					$scope.selectedList = list;
-					$scope.namesLoaded = true;
-					$scope.buttonText = 'Generate Name';
+					$scope.addList(list);
 				});
 			});
 		}
@@ -77,4 +110,4 @@ var Controller = function($scope) {
 			});
 		}
 	});
-};
+});
