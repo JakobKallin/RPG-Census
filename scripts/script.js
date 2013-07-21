@@ -10,29 +10,22 @@ angular
 		link: function(scope, $element, attrs) {
 			var element = $element[0];
 			
-			element.addEventListener('drop', function(event) {
-				event.preventDefault();
-				Array.prototype.forEach.call(event.dataTransfer.files, function(file) {
-					var reader = new FileReader();
-					reader.readAsText(file);
-					reader.onload = function() {
-						var list = JSON.parse(reader.result);
-						scope.$apply(function() {
-							var callback = scope.$eval(attrs.drop);
-							callback(list);
-						});
-					};
-				})
-			})
-			
 			element.addEventListener('dragover', function(event) {
 				event.preventDefault();
 				event.dataTransfer.dropEffect = 'copy';
 			});
+			
+			element.addEventListener('drop', function(event) {
+				event.preventDefault();
+				Array.prototype.forEach.call(event.dataTransfer.files, function(file) {
+					var callback = scope.$eval(attrs.drop);
+					callback(file);
+				});
+			});
 		}
 	};
 })
-.controller('Controller', function($scope) {
+.controller('Controller', function($scope, $timeout) {
 	$scope.maxNameCount = 20;
 	$scope.gender = 'male';
 	$scope.selectedList = null;
@@ -63,10 +56,10 @@ angular
 		set: function(theme) {
 			var links = document.head.querySelectorAll('link[title][rel~="stylesheet"]');
 			Array.prototype.forEach.call(links, function(link) {
+				// We set disabled first for a reason: Apparently a stylesheet is not applied immediately (at least in Chrome) unless it's disabled first.
+				link.disabled = true;
 				if ( link.title === theme.title ) {
 					link.disabled = false;
-				} else {
-					link.disabled = true;
 				}
 			});
 			selectedTheme = theme;
@@ -78,6 +71,38 @@ angular
 			$scope.selectedTheme = $scope.themes[0];
 		});
 	});
+	
+	$scope.addFile = function(file) {
+		if ( file.name.match(/\.css$/i) ) {
+			$scope.$apply(function() {
+				var url = URL.createObjectURL(file);
+				$scope.addStyle(file.name, url);
+			});
+		} else {
+			var reader = new FileReader();
+			reader.onload = function() {
+				$scope.$apply(function() {
+					var list = JSON.parse(reader.result);
+					$scope.addList(list);
+				});
+			};
+			reader.readAsText(file);
+		}
+	};
+	
+	$scope.addStyle = function(filename, url) {
+		var theme = {
+			// Strip extension from filename.
+			title: filename.replace(/\.[^.]*$/, ''),
+			url: url,
+			rel: 'alternate stylesheet'
+		};
+		$scope.themes.push(theme);
+		// Timeout below because setting "selectedTheme" triggers DOM manipulation, and the <link> node is not in the DOM yet.
+		$timeout(function() {
+			$scope.selectedTheme = theme;
+		});
+	};
 	
 	$scope.addList = function(list) {
 		$scope.lists.push(list);
@@ -94,9 +119,9 @@ angular
 		activateHotkeys();
 		
 		function loadLists() {
-			var fileName = 'stats/american.json';
+			var filename = 'stats/american.json';
 			var request = new XMLHttpRequest();
-			request.open('GET', fileName);
+			request.open('GET', filename);
 			request.send();
 			request.addEventListener('load', function() {
 				$scope.$apply(function() {
