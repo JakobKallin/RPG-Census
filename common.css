@@ -34,28 +34,18 @@ button:not([disabled]) {
 	text-align: center;
 }
 
-.options {
+.options, .actions {
 	margin: 1em 0;
 }
 
-.options.many {
-	column-count: 2;
-	column-gap: 1em;
-}
-
-.options li {
-	margin: 0.5em 0;
+.options li, .actions li {
 	list-style-type: none;
 	font-size: 1em;
 	display: inline;
 }
 
-.options li + li {
+.options li + li, .actions li + li {
 	margin-left: 0.5em;
-}
-
-.options.many li {
-	display: list-item;
 }
 
 button {
