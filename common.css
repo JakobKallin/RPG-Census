@@ -77,6 +77,11 @@ button {
 .names li:nth-child(20) { opacity: 0.05; }
 .names li:nth-child(n+21) { display: none; }
 
+.names li:hover {
+	/* For displaying gender. */
+	cursor: help;
+}
+
 em.hotkey {
 	font-style: normal;
 	text-decoration: underline;

@@ -60,7 +60,9 @@
 				</ul>
 			</form>
 			<ul class="names">
-				<li data-ng-repeat="name in names.slice(0, 20)">{{name}}</li>
+				<li data-ng-repeat="name in names.slice(0, 20)" title="{{name.gender | capitalize}}">
+					{{name.first}} {{name.family}}
+				</li>
 			</ul>
 			<dl class="settings">
 				<dt>Theme</dt>

@@ -4,6 +4,11 @@ Array.prototype.random = function() {
 
 angular
 .module('Census', [])
+.filter('capitalize', function() {
+	return function(string) {
+		return string.charAt(0).toUpperCase() + string.substring(1);
+	}
+})
 .directive('drop', function() {
 	return {
 		restrict: 'A',
@@ -36,10 +41,13 @@ angular
 	
 	$scope.generateName = function() {
 		var first = $scope.selectedList[$scope.gender].random();
-		var last = $scope.selectedList.family.random();
-		var full = first + ' ' + last;
+		var family = $scope.selectedList.family.random();
 		
-		$scope.names.unshift(full);
+		$scope.names.unshift({
+			first: first,
+			family: family,
+			gender: $scope.gender
+		});
 	};
 	
 	$scope.themes = [
@@ -112,7 +120,6 @@ angular
 	};
 	
 	window.addEventListener('load', function() {
-		var listNames = ['male', 'female', 'last'];
 		var button = document.querySelector('button');
 		
 		loadLists();
