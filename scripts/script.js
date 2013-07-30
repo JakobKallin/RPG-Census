@@ -32,22 +32,18 @@ angular
 })
 .controller('Controller', function($scope, $timeout) {
 	$scope.maxNameCount = 20;
-	$scope.gender = 'male';
-	$scope.selectedList = null;
-	$scope.lists = [];
+	$scope.selected = {
+		'pattern': null,
+		'database': null
+	};
+	$scope.databases = [];
 	$scope.names = [];
 	$scope.buttonText = 'Loading Names…';
 	$scope.namesLoaded = false;
 	
 	$scope.generateName = function() {
-		var first = $scope.selectedList[$scope.gender].random();
-		var family = $scope.selectedList.family.random();
-		
-		$scope.names.unshift({
-			first: first,
-			family: family,
-			gender: $scope.gender
-		});
+		var name = $scope.selected.database.randomName($scope.selected.pattern);
+		$scope.names.unshift(name);
 	};
 	
 	$scope.themes = [
@@ -90,8 +86,9 @@ angular
 			var reader = new FileReader();
 			reader.onload = function() {
 				$scope.$apply(function() {
-					var list = JSON.parse(reader.result);
-					$scope.addList(list);
+					var config = JSON.parse(reader.result);
+					var database = NameDatabase.fromConfig(config);
+					$scope.addDatabase(database);
 				});
 			};
 			reader.readAsText(file);
@@ -112,9 +109,10 @@ angular
 		});
 	};
 	
-	$scope.addList = function(list) {
-		$scope.lists.push(list);
-		$scope.selectedList = list;
+	$scope.addDatabase = function(database) {
+		$scope.databases.push(database);
+		$scope.selected.database = database;
+		$scope.selected.pattern = database.patternNames[0];
 		$scope.namesLoaded = true;
 		$scope.buttonText = 'Generate Name';
 	};
@@ -122,35 +120,61 @@ angular
 	window.addEventListener('load', function() {
 		var button = document.querySelector('button');
 		
-		loadLists();
-		activateHotkeys();
+		loadDatabases();
 		
-		function loadLists() {
+		function loadDatabases() {
 			var filename = 'stats/american.json';
 			var request = new XMLHttpRequest();
 			request.open('GET', filename);
 			request.send();
 			request.addEventListener('load', function() {
 				$scope.$apply(function() {
-					var list = JSON.parse(request.responseText);
-					$scope.addList(list);
+					var config = JSON.parse(request.responseText);
+					var database = NameDatabase.fromConfig(config);
+					$scope.addDatabase(database);
 				});
 			});
 		}
-		
-		function activateHotkeys() {
-			var hotkeys = {
-				'M': 'male',
-				'F': 'female'
-			};
+	});
+	
+	var NameDatabase = function(title, patterns, lists) {
+		this.randomName = function(patternName) {
+			var pattern = patterns[patternName];
+			if ( !(patternName in patterns) ) {
+				throw new Error('The name list "' + title + '" has no pattern named "' + patternName + '"');
+			}
 			
-			document.addEventListener('keydown', function(event) {
-				var key = String.fromCharCode(event.keyCode);
-				if ( key in hotkeys ) {
-					$scope.gender = hotkeys[key];
-					button.click();
+			var nameTokens = pattern.map(function(patternToken) {
+				if ( patternToken in lists ) {
+					return lists[patternToken].random();
+				} else {
+					return patternToken;
 				}
 			});
+			var name = nameTokens.join('');
+			
+			return name;
+		};
+		
+		this.patternNames = [];
+		for ( var name in patterns ) {
+			this.patternNames.push(name);
 		}
-	});
+	};
+	
+	NameDatabase.fromConfig = function(config) {
+		var title = String(config.title);
+		
+		var patterns = {};
+		for ( var patternName in config.patterns ) {
+			patterns[patternName] = config.patterns[patternName].map(String);
+		}
+		
+		var lists = {};
+		for ( var listName in config.lists ) {
+			lists[listName] = config.lists[listName].map(String);
+		}
+		
+		return new NameDatabase(title, patterns, lists)
+	};
 });

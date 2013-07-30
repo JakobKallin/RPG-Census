@@ -25,30 +25,14 @@
 			<h1>RPG Census</h1>
 			<form>
 				<ul class="options">
-					<li>
-						<select
-							data-ng-model="selectedList"
-							data-ng-options="list.culture for list in lists"
-							data-ng-show="lists.length > 1">
-						</select>
-					</li>
-					<li>
+					<li data-ng-repeat="patternName in selected.database.patternNames">
 						<input
 							type="radio"
-							name="gender"
-							value="male"
-							id="male"
-							data-ng-model="gender"><!--
-						--><label for="male"><em class="hotkey">M</em>ale</label>
-					</li>
-					<li>
-						<input
-							type="radio"
-							name="gender"
-							value="female"
-							id="female"
-							data-ng-model="gender"><!--
-						--><label for="female"><em class="hotkey">F</em>emale</label>
+							name="pattern"
+							value="{{patternName}}"
+							id="pattern-{{patternName}}"
+							data-ng-model="selected.pattern"><!--
+						--><label for="pattern-{{patternName}}">{{patternName}}</label>
 					</li>
 				</ul>
 				<ul class="actions">
@@ -61,9 +45,7 @@
 				</ul>
 			</form>
 			<ul class="names">
-				<li data-ng-repeat="name in names.slice(0, 20)" title="{{name.gender | capitalize}}">
-					{{name.first}} {{name.family}}
-				</li>
+				<li data-ng-repeat="name in names.slice(0, 20)">{{name}}</li>
 			</ul>
 			<dl class="settings">
 				<dt>Theme</dt>
