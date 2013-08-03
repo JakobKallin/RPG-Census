@@ -178,6 +178,14 @@ angular
 	NameDatabase.fromConfig = function(config) {
 		var title = config.title ? String(config.title) : 'Untitled';
 		
+		if ( config.pattern && config.patterns ) {
+			throw new Error('A generator cannot have both a "pattern" property and a "patterns" property.');
+		} else if ( config.pattern ) {
+			config.patterns = {
+				'Default': config.pattern
+			};
+		}
+
 		var patterns = {};
 		for ( var patternName in config.patterns ) {
 			patterns[patternName] = config.patterns[patternName].map(String);
