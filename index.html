@@ -9,8 +9,8 @@
 		
 		<title>RPG Census</title>
 		
-		<script src="scripts/angular.js"></script>
-		<script src="scripts/script.js" charset="utf-8"></script>
+		<script src="angular.js"></script>
+		<script src="script.js" charset="utf-8"></script>
 		
 		<link rel="stylesheet" href="common.css">
 		
@@ -25,13 +25,19 @@
 			<h1>RPG Census</h1>
 			<form>
 				<ul class="options">
+					<li data-ng-if="databases.length > 1">
+						<select
+							data-ng-model="selected.database"
+							data-ng-options="database.title for database in databases">
+						</select>
+					</li>
 					<li data-ng-repeat="patternName in selected.database.patternNames">
 						<input
 							type="radio"
 							name="pattern"
 							value="{{patternName}}"
 							id="pattern-{{patternName}}"
-							data-ng-model="selected.pattern"><!--
+							data-ng-model="selected.database.selected.pattern"><!--
 						--><label for="pattern-{{patternName}}">{{patternName}}</label>
 					</li>
 				</ul>
@@ -39,7 +45,7 @@
 					<li>
 						<button
 							type="submit"
-							data-ng-click="generateName()"
+							data-ng-click="generateName(selected.database, selected.database.selected.pattern)"
 							data-ng-disabled="lists.length == 0">{{buttonText}}</button>
 					</li>
 				</ul>

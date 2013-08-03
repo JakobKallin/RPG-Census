@@ -48,6 +48,10 @@ button:not([disabled]) {
 	margin-left: 0.5em;
 }
 
+.options {
+	line-height: 2em;
+}
+
 button {
 	font-size: 1.25em;
 	padding: 0.4em;

@@ -33,16 +33,15 @@ angular
 .controller('Controller', function($scope, $timeout) {
 	$scope.maxNameCount = 20;
 	$scope.selected = {
-		'pattern': null,
-		'database': null
+		database: null
 	};
 	$scope.databases = [];
 	$scope.names = [];
 	$scope.buttonText = 'Loading Names…';
 	$scope.namesLoaded = false;
 	
-	$scope.generateName = function() {
-		var name = $scope.selected.database.randomName($scope.selected.pattern);
+	$scope.generateName = function(database, pattern) {
+		var name = database.randomName(pattern);
 		$scope.names.unshift(name);
 	};
 	
@@ -112,7 +111,6 @@ angular
 	$scope.addDatabase = function(database) {
 		$scope.databases.push(database);
 		$scope.selected.database = database;
-		$scope.selected.pattern = database.patternNames[0];
 		$scope.namesLoaded = true;
 		$scope.buttonText = 'Generate Name';
 	};
@@ -138,6 +136,17 @@ angular
 	});
 	
 	var NameDatabase = function(title, patterns, lists) {
+		this.title = title;
+
+		this.patternNames = [];
+		for ( var name in patterns ) {
+			this.patternNames.push(name);
+		}
+
+		this.selected = {
+			pattern: this.patternNames[0]
+		};
+
 		this.randomName = function(patternName) {
 			var pattern = patterns[patternName];
 			if ( !(patternName in patterns) ) {
@@ -155,11 +164,6 @@ angular
 			
 			return name;
 		};
-		
-		this.patternNames = [];
-		for ( var name in patterns ) {
-			this.patternNames.push(name);
-		}
 	};
 	
 	NameDatabase.fromConfig = function(config) {
