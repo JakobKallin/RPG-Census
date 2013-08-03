@@ -107,12 +107,21 @@ angular
 			$scope.selectedTheme = theme;
 		});
 	};
-	
+
 	$scope.addDatabase = function(database) {
-		$scope.databases.push(database);
+		$scope.addDatabaseSilently(database);
 		$scope.selected.database = database;
-		$scope.namesLoaded = true;
-		$scope.buttonText = 'Generate Name';
+	};
+
+	$scope.addDatabaseSilently = function(database) {
+		$scope.databases.push(database);
+		if ( !$scope.namesLoaded ) {
+			$scope.namesLoaded = true;
+			$scope.buttonText = 'Generate Name';
+		}
+		if ( !$scope.selected.database ) {
+			$scope.selected.database = database;
+		}
 	};
 	
 	window.addEventListener('load', function() {
@@ -129,7 +138,7 @@ angular
 				$scope.$apply(function() {
 					var config = JSON.parse(request.responseText);
 					var database = NameDatabase.fromConfig(config);
-					$scope.addDatabase(database);
+					$scope.addDatabaseSilently(database);
 				});
 			});
 		}
