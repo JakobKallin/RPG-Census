@@ -176,7 +176,7 @@ angular
 	};
 	
 	NameDatabase.fromConfig = function(config) {
-		var title = String(config.title);
+		var title = config.title ? String(config.title) : 'Untitled';
 		
 		var patterns = {};
 		for ( var patternName in config.patterns ) {
