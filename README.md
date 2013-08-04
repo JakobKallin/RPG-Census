@@ -21,37 +21,43 @@ RPG Census uses data from the 1990 U.S. census consisting of approximately 5,000
 ## Creating your own generator
 You can create your own generator for use in RPG Census by creating a file with the following format:
 
-	title: American Top 3
-	patterns:
-		Male: [male, " ", family]
-		Female: [female, " ", family]
-	lists:
-		male: [James, John, Robert]
-		female: [Mary, Patricia, Linda]
-		family: [Smith, Johnson, Williams]
+```yaml
+title: American Top 3
+patterns:
+    Male: [male, " ", family]
+    Female: [female, " ", family]
+lists:
+    male: [James, John, Robert]
+    female: [Mary, Patricia, Linda]
+    family: [Smith, Johnson, Williams]
+```
 
-Save the file with the extension `.yaml` (or download [`american-top-3.yaml`](american-top-3.yaml)) and then drag-and-drop it into RPG Census in order to start using it.
+Save the file with the extension `.yaml` (or download [`american-top-3.yaml`](blob/master/american-top-3.yml)) and then drag-and-drop it into RPG Census in order to start using it.
 
 ### Getting creative
 When you start writing custom generators, RPG Census can be used for generating much more than just names. For example:
 
-	title: City Professionals
-	patterns:
-		West: [name, ", ", occupation, " from ", west]
-		East: [name, ", ", occupation, " from ", east]
-	lists:
-		name: [James, John, Robert, Mary, Patricia, Linda]
-		occupation: [police officer, teacher, mechanic, reporter]
-		west: [Los Angeles, San Francisco, Seattle]
-		east: [New York, Boston, Miami]
+```yaml
+title: City Professionals
+patterns:
+    West: [name, ", ", occupation, " from ", west]
+    East: [name, ", ", occupation, " from ", east]
+lists:
+    name: [James, John, Robert, Mary, Patricia, Linda]
+    occupation: [police officer, teacher, mechanic, reporter]
+    west: [Los Angeles, San Francisco, Seattle]
+    east: [New York, Boston, Miami]
+```
 
 ### Generators with only one pattern
 If your generator only has one pattern, you can use the shorthand syntax below:
 
-	title: ...
-	pattern: [a, b, c]
-	lists:
-		...
+```yaml
+title: ...
+pattern: [a, b, c]
+lists:
+    ...
+```
 
 ### YAML and JSON
 The format used in the examples above is YAML, but you can also use equivalent JSON.

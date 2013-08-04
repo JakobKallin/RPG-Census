@@ -133,7 +133,7 @@ angular
 		loadDatabases();
 		
 		function loadDatabases() {
-			var filename = 'stats/american.json';
+			var filename = 'american.json';
 			var request = new XMLHttpRequest();
 			request.open('GET', filename);
 			request.send();

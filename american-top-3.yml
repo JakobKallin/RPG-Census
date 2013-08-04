@@ -1,8 +1,8 @@
 title: American Top 3
 patterns:
-	Male: [male, " ", family]
-	Female: [female, " ", family]
+    Male: [male, " ", family]
+    Female: [female, " ", family]
 lists:
-	male: [James, John, Robert]
-	female: [Mary, Patricia, Linda]
-	family: [Smith, Johnson, Williams]
+    male: [James, John, Robert]
+    female: [Mary, Patricia, Linda]
+    family: [Smith, Johnson, Williams]
