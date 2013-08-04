@@ -2,16 +2,56 @@
 
 [RPG Census][rpg-census] generates names for your roleplaying game characters using data from the United States census. The names are chosen completely at random, which means that *James Smith* is just as likely be generated as *Elden Aalderink*. There is a tremendous diversity in American demographics, making RPG Census suitable for not only modern-day settings but also science fiction and even fantasy.
 
-To try out RPG Census, visit: http://jakobkallin.github.com/RPG-Census/
+[» Try RPG Census][rpg-census]
 
-[rpg-census]: http://jakobkallin.github.com/RPG-Census/
+RPG Census can also be used to create your own name generators, [as described below](#creating-your-own-generator).
+
+[rpg-census]: http://census.jakobkallin.com/
 
 ## The data
-RPG Census uses data from the 1990 U.S. census consisting of approximately 5,000 first names and almost 90,000 surnames. This data is freely [available at the United States Census Bureau's website][census].
+RPG Census uses data from the 1990 U.S. census consisting of approximately 5,000 first names and almost 90,000 surnames. This data is freely [available at the United States Census Bureau's website][us-census].
 
-[census]: http://www.census.gov/genealogy/www/data/1990surnames/names_files.html
+[us-census]: http://www.census.gov/genealogy/www/data/1990surnames/names_files.html
 
 ## Known issues
 
 - **Some names are displayed incorrectly.** Names with irregular capitalization (such as McDonald) or multiple parts (such as De Leon) lose this information in RPG Census. This is because of limitations in the published census data itself, which presents all names in upper case and without spaces.
 - **The names are from an old census.** RPG Census uses data from the 1990 census, even though there have been two more censuses since then. This is because the 1990 census appears to be the latest census for which name statistics are publicly available online.
+
+## Creating your own generator
+You can create your own generator for use in RPG Census by creating a file with the following format:
+
+	title: American Top 3
+	patterns:
+		Male: [male, " ", family]
+		Female: [female, " ", family]
+	lists:
+		male: [James, John, Robert]
+		female: [Mary, Patricia, Linda]
+		family: [Smith, Johnson, Williams]
+
+Save the file with the extension `.yaml` (or download [`american-top-3.yaml`](american-top-3.yaml)) and then drag-and-drop it into RPG Census in order to start using it.
+
+### Getting creative
+When you start writing custom generators, RPG Census can be used for generating much more than just names. For example:
+
+	title: City Professionals
+	patterns:
+		West: [name, ", ", occupation, " from ", west]
+		East: [name, ", ", occupation, " from ", east]
+	lists:
+		name: [James, John, Robert, Mary, Patricia, Linda]
+		occupation: [police officer, teacher, mechanic, reporter]
+		west: [Los Angeles, San Francisco, Seattle]
+		east: [New York, Boston, Miami]
+
+### Generators with only one pattern
+If your generator only has one pattern, you can use the shorthand syntax below:
+
+	title: ...
+	pattern: [a, b, c]
+	lists:
+		...
+
+### YAML and JSON
+The format used in the examples above is YAML, but you can also use equivalent JSON.

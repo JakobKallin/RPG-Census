@@ -85,7 +85,10 @@ angular
 			var reader = new FileReader();
 			reader.onload = function() {
 				$scope.$apply(function() {
-					var config = JSON.parse(reader.result);
+					var config =
+						file.name.match(/\.ya?ml$/i)
+						? jsyaml.load(reader.result.replace(/\t/g, '    '))
+						: JSON.parse(reader.result);
 					var database = NameDatabase.fromConfig(config);
 					$scope.addDatabase(database);
 				});
