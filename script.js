@@ -122,26 +122,32 @@ angular
 			$scope.namesLoaded = true;
 			$scope.buttonText = 'Generate Name';
 		}
-		if ( !$scope.selected.database ) {
-			$scope.selected.database = database;
-		}
 	};
 	
 	window.addEventListener('load', function() {
-		var button = document.querySelector('button');
-		
 		loadDatabases();
 		
 		function loadDatabases() {
-			var filename = 'american.json';
-			var request = new XMLHttpRequest();
-			request.open('GET', filename);
-			request.send();
-			request.addEventListener('load', function() {
-				$scope.$apply(function() {
-					var config = JSON.parse(request.responseText);
-					var database = NameDatabase.fromConfig(config);
-					$scope.addDatabaseSilently(database);
+			var filenames = ['american.json', 'american-top-200.json'];
+			filenames.forEach(function(filename) {
+				var request = new XMLHttpRequest();
+				request.open('GET', filename);
+				request.send();
+				request.addEventListener('load', function() {
+					$scope.$apply(function() {
+						var config = JSON.parse(request.responseText);
+						var database = NameDatabase.fromConfig(config);
+						$scope.addDatabaseSilently(database);
+						
+						// "American" should be first, followed by "American (Top 200)"
+						$scope.databases.sort(function(a, b) {
+							return a.title.localeCompare(b.title);
+						});
+						// Make sure the first one is selected.
+						if ( !$scope.selected.database && filename === filenames[0] ) {
+							$scope.selected.database = $scope.databases[0];
+						}
+					});
 				});
 			});
 		}
