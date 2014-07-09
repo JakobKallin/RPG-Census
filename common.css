@@ -68,15 +68,15 @@ button {
 	margin: 0.5em 0;
 }
 
-.names li:nth-child(12) { opacity: 0.45; }
-.names li:nth-child(13) { opacity: 0.40; }
-.names li:nth-child(14) { opacity: 0.35; }
-.names li:nth-child(15) { opacity: 0.30; }
-.names li:nth-child(16) { opacity: 0.25; }
-.names li:nth-child(17) { opacity: 0.20; }
-.names li:nth-child(18) { opacity: 0.15; }
-.names li:nth-child(19) { opacity: 0.1; }
-.names li:nth-child(20) { opacity: 0.05; }
+.names li:nth-child(12) { opacity: 0.90; }
+.names li:nth-child(13) { opacity: 0.80; }
+.names li:nth-child(14) { opacity: 0.70; }
+.names li:nth-child(15) { opacity: 0.60; }
+.names li:nth-child(16) { opacity: 0.50; }
+.names li:nth-child(17) { opacity: 0.40; }
+.names li:nth-child(18) { opacity: 0.30; }
+.names li:nth-child(19) { opacity: 0.20; }
+.names li:nth-child(20) { opacity: 0.10; }
 .names li:nth-child(n+21) { display: none; }
 
 .settings {
