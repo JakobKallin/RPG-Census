@@ -59,13 +59,11 @@ button {
 
 .names li {
 	list-style-type: none;
-	opacity: 0.5;
 	line-height: 1.5;
 	font-size: 1em;
 }
 
 .names li:first-child {
-	opacity: 1;
 	font-size: 1.5em;
 	margin: 0.5em 0;
 }

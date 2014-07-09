@@ -1,3 +1,7 @@
 body, button, select {
 	font-family: Georgia, serif;
 }
+
+.names li:not(:first-child) {
+	color: hsla(0, 0%, 0%, 0.5);
+}

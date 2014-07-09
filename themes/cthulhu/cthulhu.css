@@ -37,3 +37,7 @@ select {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
+.names li:not(:first-child) {
+	color: hsla(0, 0%, 0%, 0.5);
+}
