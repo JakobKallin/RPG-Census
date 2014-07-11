@@ -166,11 +166,20 @@ angular
 		};
 
 		this.randomName = function(patternName) {
-			var pattern = patterns[patternName];
 			if ( !(patternName in patterns) ) {
 				throw new Error('The name list "' + title + '" has no pattern named "' + patternName + '"');
 			}
 			
+			if ( patterns[patternName].every(isArray) ) {
+				// Multiple variations.
+				var variations = patterns[patternName];
+			}
+			else {
+				// Single variation.
+				var variations = [patterns[patternName]];
+			}
+			
+			var pattern = variations.random();
 			var nameTokens = pattern.map(function(patternToken) {
 				if ( patternToken in lists ) {
 					return lists[patternToken].random();
@@ -182,6 +191,10 @@ angular
 			
 			return name;
 		};
+		
+		function isArray(value) {
+			return value instanceof Array;
+		}
 	};
 	
 	NameDatabase.fromConfig = function(config) {
@@ -197,7 +210,7 @@ angular
 
 		var patterns = {};
 		for ( var patternName in config.patterns ) {
-			patterns[patternName] = config.patterns[patternName].map(String);
+			patterns[patternName] = config.patterns[patternName];
 		}
 		
 		var lists = {};
