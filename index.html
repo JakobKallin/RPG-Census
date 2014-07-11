@@ -32,9 +32,14 @@
 							data-ng-options="database.title for database in databases">
 						</select>
 					</li>
+					<li data-ng-show="selected.database.patternNames.length >= 4">
+						<select
+							data-ng-model="selected.database.selected.pattern"
+							data-ng-options="patternName for patternName in selected.database.patternNames"></select>
+					</li>
 					<li
 						data-ng-repeat="patternName in selected.database.patternNames"
-						data-ng-show="selected.database.patternNames.length > 1">
+						data-ng-show="selected.database.patternNames.length >= 2 && selected.database.patternNames.length <= 3">
 						<input
 							type="radio"
 							name="pattern"
