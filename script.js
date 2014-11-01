@@ -46,7 +46,8 @@ angular
 	};
 	
 	$scope.themes = [
-		{ title: 'Generic', url: 'themes/generic/generic.css', rel: 'stylesheet' },
+		{ title: 'Light', url: 'themes/light/light.css', rel: 'stylesheet' },
+		{ title: 'Dark', url: 'themes/dark/dark.css', rel: 'stylesheet' },
 		{ title: 'Sci-Fi', url: 'themes/sci-fi/sci-fi.css', rel: 'alternate stylesheet' },
 		{ title: 'Cthulhu', url: 'themes/cthulhu/cthulhu.css', rel: 'alternate stylesheet' }
 	];

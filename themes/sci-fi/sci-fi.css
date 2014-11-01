@@ -18,7 +18,3 @@ body, button, select {
 h1 {
 	text-shadow: 0 0 1em hsl(190, 100%, 50%);
 }
-
-.names li:not(:first-child) {
-	color: hsla(190, 100%, 50%, 0.5);
-}
