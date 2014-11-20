@@ -27,7 +27,7 @@ lists:
     family: [Smith, Johnson, Williams]
 ```
 
-Save the file with the extension `.yaml` (or download [`american-top-3.yaml`](https://raw.github.com/JakobKallin/RPG-Census/master/american-top-3.yml)) and then drag-and-drop it into RPG Census in order to start using it.
+Save the file with the extension `.yaml` (or download [`american-top-3.yaml`](https://raw.github.com/JakobKallin/RPG-Census/master/american-top-3.yaml)) and then drag-and-drop it into RPG Census in order to start using it.
 
 ### Getting creative
 When you start writing custom generators, RPG Census can be used for generating much more than just names. For example:
