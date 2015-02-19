@@ -44,12 +44,26 @@ button:not([disabled]) {
 	display: inline;
 }
 
-.options li + li, .actions li + li {
+.database-dropdown,
+.pattern-dropdown,
+.pattern-buttons {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.pattern-buttons li + li,
+.actions li + li {
 	margin-left: 0.5em;
 }
 
 .options {
 	line-height: 2em;
+}
+
+.database-dropdown,
+.pattern-dropdown,
+.pattern-buttons {
+	display: inline-block;
 }
 
 button {

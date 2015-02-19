@@ -26,30 +26,32 @@
 		<div class="content">
 			<h1>RPG Census</h1>
 			<form>
-				<ul class="options">
-					<li data-ng-if="databases.length > 1">
+				<div class="options">
+					<div class="database-dropdown" data-ng-if="databases.length > 1">
 						<select
 							data-ng-model="selected.database"
 							data-ng-options="database.title for database in databases">
 						</select>
-					</li>
-					<li data-ng-show="selected.database.patternNames.length >= 4">
+					</div><!--
+					--><div class="pattern-dropdown" data-ng-show="selected.database.patternNames.length >= 4">
 						<select
 							data-ng-model="selected.database.selected.pattern"
 							data-ng-options="patternName for patternName in selected.database.patternNames"></select>
-					</li>
-					<li
-						data-ng-repeat="patternName in selected.database.patternNames"
-						data-ng-show="selected.database.patternNames.length >= 2 && selected.database.patternNames.length <= 3">
-						<input
-							type="radio"
-							name="pattern"
-							value="{{patternName}}"
-							id="pattern-{{patternName}}"
-							data-ng-model="selected.database.selected.pattern"><!--
-						--><label for="pattern-{{patternName}}">{{patternName}}</label>
-					</li>
-				</ul>
+					</div><!--
+					--><ul class="pattern-buttons">
+						<li
+							data-ng-repeat="patternName in selected.database.patternNames"
+							data-ng-show="selected.database.patternNames.length >= 2 && selected.database.patternNames.length <= 3">
+							<input
+								type="radio"
+								name="pattern"
+								value="{{patternName}}"
+								id="pattern-{{patternName}}"
+								data-ng-model="selected.database.selected.pattern"><!--
+							--><label for="pattern-{{patternName}}">{{patternName}}</label>
+						</li>
+					</ul>
+				</div>
 				<ul class="actions">
 					<li>
 						<button
