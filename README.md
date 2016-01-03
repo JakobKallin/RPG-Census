@@ -11,7 +11,7 @@ RPG Census can also be used to create your own name generators, [as described be
 ## The data
 RPG Census uses data from the 1990 U.S. census consisting of approximately 5,000 first names and almost 90,000 surnames. This data is freely [available at the United States Census Bureau's website][us-census].
 
-[us-census]: http://www.census.gov/genealogy/www/data/1990surnames/names_files.html
+[us-census]: http://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html
 
 ## Creating your own generator
 You can create your own generator for use in RPG Census by creating a file with the following format:
