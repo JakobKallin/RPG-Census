@@ -39,19 +39,20 @@ angular
 	$scope.names = [];
 	$scope.buttonText = 'Loading Names…';
 	$scope.namesLoaded = false;
-	
+
 	$scope.generateName = function(database, pattern) {
 		var name = database.randomName(pattern);
 		$scope.names.unshift(name);
 	};
-	
+
 	$scope.themes = [
 		{ title: 'Light', url: 'themes/light/light.css', rel: 'stylesheet' },
-		{ title: 'Dark', url: 'themes/dark/dark.css', rel: 'stylesheet' },
+		{ title: 'Dark', url: 'themes/dark/dark.css', rel: 'alternate stylesheet' },
 		{ title: 'Sci-Fi', url: 'themes/sci-fi/sci-fi.css', rel: 'alternate stylesheet' },
-		{ title: 'Cthulhu', url: 'themes/cthulhu/cthulhu.css', rel: 'alternate stylesheet' }
+		{ title: 'Cthulhu', url: 'themes/cthulhu/cthulhu.css', rel: 'alternate stylesheet' },
+		{ title: 'Fiasco', url: 'themes/fiasco/fiasco.css', rel: 'alternate stylesheet' }
 	];
-	
+
 	var selectedTheme;
 	Object.defineProperty($scope, 'selectedTheme', {
 		get: function() {

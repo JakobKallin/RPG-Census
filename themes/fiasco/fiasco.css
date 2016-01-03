@@ -1,0 +1,39 @@
+@font-face {
+    font-family: Hitchcock;
+    src: url("Hitchcock.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: Vertigo;
+    src: url("VERTRG_.ttf") format('truetype');
+}
+
+body {
+	font-family: Hitchcock, sans-serif;
+    color: hsl(35, 50%, 70%);
+    background-color: hsl(0, 70%, 35%);
+}
+
+h1, button, label {
+	font-family: Vertigo, sans-serif;
+}
+
+select {
+	font-family: Vertigo, sans-serif;
+}
+
+.settings dt {
+	font-family: Vertigo, sans-serif;
+}
+
+.names {
+    font-size: 0.75em;
+}
+
+.names li:first-child {
+    margin: 1em 0;
+}
+
+.names li:not(:first-child) {
+	color: hsla(35, 50%, 70%, 0.5);
+}
